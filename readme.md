@@ -36,7 +36,7 @@ webpack is the stuff nightmares are made of. the browserify cli is focused, and 
 
 there isn’t a need to stick to any specific structuring, but i find this setup to work well.
 
-## root
+### root
 
 the root directory contains three directories:
 
