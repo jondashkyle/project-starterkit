@@ -1,0 +1,7 @@
+NODE_ENV=production browserify \
+  source/index.js \
+  -t envify \
+  -g yo-yoify \
+  -g es2020 \
+  -g uglifyify \
+  > public/bundles/bundle.js
