@@ -1,0 +1,5 @@
+node -e 'require("./source/design/styles").build()' \
+  | postcss \
+  --use autoprefixer \
+  --use postcss-clean \
+  > public/bundles/bundle.css
