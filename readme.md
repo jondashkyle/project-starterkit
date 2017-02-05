@@ -36,15 +36,15 @@ webpack is the stuff nightmares are made of. the browserify cli is focused, and 
 
 there isn’t a need to stick to any specific structuring, but i find this setup to work well.
 
-### root
+### /
 
 the root directory contains three directories:
 
-- **documents** contains any non-public files related to the project, such as assets from the client, design files, invoices, etc…
-- **public** is what ends up on your server.
 - **source** contains all your js.
+- **public** is what ends up on your server.
+- **documents** contains any non-public files related to the project, such as assets from the client, design files, invoices, etc…
 
-### source
+### /source
 
 the source directory contains a few directories, too:
 
@@ -53,6 +53,10 @@ the source directory contains a few directories, too:
 - **views** connect directly to the router
 - **model** contains your state, reducers, etc…
 - **design** is anything global to design, such as gr8, webfonts, etc…
+
+### /public
+
+this is all static. if there is anything which needs to be dynamic, i’ll create a JSON endpoint to populate state spererately from this build, most oftentimes using an installation of [kirby](https://getkirby.com/).
 
 ## installation
 
