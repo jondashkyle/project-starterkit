@@ -34,6 +34,10 @@ webpack is the stuff nightmares are made of. the browserify cli is focused, and 
 
 ## structure
 
+there isn’t a need to stick to any specific structuring, but i find this setup to work well.
+
+## root
+
 the root directory contains three directories:
 
 - **documents** contains any non-public files related to the project, such as assets from the client, design files, invoices, etc…
