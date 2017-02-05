@@ -1,4 +1,5 @@
 var x = require('xtend')
+var xhr = require('xhr')
 
 module.exports = {
   state: {

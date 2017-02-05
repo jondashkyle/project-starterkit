@@ -8,7 +8,7 @@ function View (state, prev, send) {
   })
 
   return h`
-    <main class="ff-sans fs1">
+    <main class="ff-sans fs1 p2">
       ${elExample} 
     </main>
   `

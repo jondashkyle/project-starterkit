@@ -18,19 +18,18 @@ exports.spacing = [
   3.5,
   4,
   4.5,
-  5,
-  6
+  5
 ]
 
 exports.fontSize = [
-  { 1: 1.2 },
+  { 1: 1.4 },
   { 2: 1.8 },
   { 3: 2.2 }
 ]
 
 exports.lineHeight = [
   { 1: 1 },
-  { 2: 1.35 }
+  { 2: 1.5 }
 ]
 
 exports.responsive = true

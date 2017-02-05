@@ -1,9 +1,10 @@
 ## choo starter kit
-my personal starter kit for projects. going to document this further…
+my personal starter kit for projects.
 
 ## core dependencies
 - choo
 - gr8
+- browserify
 
 ## installation
 - run `npm install` to configure dependencies

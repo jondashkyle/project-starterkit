@@ -1,8 +1,10 @@
-var h = require('bel')
-var reset = require('recsst')
 var gr8 = require('gr8')
+var rst = require('recsst')
+var dev = require('gr8-dev')
+var h = require('bel')
 
 var settings = require('./settings')
+var typography = require('./typography')
 var css = gr8(settings)
 
 css.add({
@@ -33,8 +35,9 @@ function start () {
   var style = h`<style></style>`
   style.innerHTML = custom
 
+  dev.attach()
   css.attach()
-  reset.attach()
+  rst.attach()
 
   document.head.appendChild(style)
 }
