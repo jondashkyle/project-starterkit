@@ -56,6 +56,10 @@ the source directory contains a few directories, too:
 
 this is all static. if there is anything which needs to be dynamic, i’ll create a JSON endpoint to populate state spererately from this build, most oftentimes using an installation of [kirby](https://getkirby.com/).
 
+### `/bin`
+
+these are tiny build scripts used within the scripts section of `package.json`. also handy to throw additional scripts in here, such as data parsing or image resizing utils.
+
 ## installation
 
 - run `npm install` to add dependencies
