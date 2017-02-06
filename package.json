@@ -4,15 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "browserify source/index.js -o public/bundles/bundle.js -g es2020",
-    "start": "budo source/index.js:bundles/bundle.js --dir public --pushstate --live"
+    "build": "bin/build",
+    "start": "bin/start"
   },
   "author": "Jon-Kyle Mohr",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^6.7.2",
     "browserify": "^14.0.0",
     "budo": "^9.4.5",
-    "es2020": "^1.1.9"
+    "envify": "^4.0.0",
+    "es2020": "^1.1.9",
+    "postcss-clean": "^1.0.2",
+    "postcss-cli": "^2.6.0",
+    "uglifyify": "^3.0.4",
+    "yo-yoify": "^3.5.0"
   },
   "dependencies": {
     "bel": "^4.5.1",
