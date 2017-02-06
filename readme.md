@@ -16,8 +16,6 @@ i found the process of learning it to be kind of a drag, though… it felt very
 
 these felt better to use, but didn’t click w/ my way of understanding (this isn’t a critisism, but an observation.) then i came across yo-yo, a lightweight module which handles element morphing using vanilla dom elements (nothing virtual here.) it linked to a higher-level framework called [choo](https://github.com/yoshuawuyts/choo), which clicked in that way the others didn’t.
 
-expanding upon that *feeling* of being better to use, i’d say choo is closer to owning a chair designed by a friend, and react is like buying one at ikea. both pragmatically have a place, but my preference is clear.
-
 ## core dependencies
 
 ### choo
