@@ -1,4 +1,5 @@
 budo \
-  source/index.js \
+  source/index.js:bundle.js \
+  --dir public \
   --pushstate \
   --live

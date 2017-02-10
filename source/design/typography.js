@@ -1,28 +1,16 @@
 var x = require('xtend')
-var wfl = require('webfontloader')
-
-var families = [
-  'SussieIntl'
-]
-
-var urls = [
-  '/assets/fonts.css'
-]
+var FontFaceObserver = require('fontfaceobserver')
 
 exports.start = function (opts) {
   var o = x({
+    family: '',
     timeout: 2000,
     active: function () { },
     inactive: function () { }
   }, opts)
 
-  wfl.load({
-    timeout: o.timeout,
-    active: o.active,
-    inactive: o.inactive,
-    custom: {
-      families: families,
-      urls: urls
-    }
-  })
+  if (o.family) {
+    var font = new FontFaceObserver(o.family)
+    font.load().then(o.active, o.inactive)
+  }
 }

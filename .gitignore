@@ -1,3 +1,6 @@
 .DS_STORE
+npm-debug.log
 node_modules
-public/bundles
+
+public/bundle.css
+public/bundle.js
