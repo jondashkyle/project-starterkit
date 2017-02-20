@@ -24,13 +24,13 @@
     "bel": "^4.5.1",
     "cache-element": "^2.0.1",
     "choo": "^4.1.0",
+    "fontfaceobserver": "^2.0.8",
     "gr8": "^2.0.7",
     "gr8-dev": "0.0.1",
     "lilcss": "git+https://github.com/jongacnik/lilcss.git",
     "nanomorph": "^2.1.3",
-    "object.values": "^1.0.4",
+    "object-values": "^1.0.0",
     "recsst": "^1.1.1",
-    "webfontloader": "^1.6.27",
     "xhr": "^2.3.3",
     "xtend": "^4.0.1"
   }

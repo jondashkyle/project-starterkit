@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 node -e 'require("./source/design/styles").build()' \
   | lilcss -f source/**/*.js \
+=======
+node -e 'require("./source/design").build()' \
+>>>>>>> c8b54aaf01a29c2ab27f25a1564bf159581f1fb5
   | postcss \
   --use autoprefixer \
   --use postcss-clean \
-  > public/bundles/bundle.css
+  > public/bundle.css

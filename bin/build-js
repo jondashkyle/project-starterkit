@@ -4,4 +4,4 @@ NODE_ENV=production browserify \
   -g yo-yoify \
   -g es2020 \
   -g uglifyify \
-  > public/bundles/bundle.js
+  > public/bundle.js
