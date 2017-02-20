@@ -4,7 +4,7 @@ var xhr = require('xhr')
 module.exports = {
   state: {
     options: {
-      title: 'Choo Starter'
+      title: 'Choo Starter two'
     }
   },
   reducers: {

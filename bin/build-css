@@ -1,4 +1,5 @@
 node -e 'require("./source/design/styles").build()' \
+  | lilcss -f source/**/*.js \
   | postcss \
   --use autoprefixer \
   --use postcss-clean \
