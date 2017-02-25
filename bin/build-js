@@ -1,5 +1,6 @@
 NODE_ENV=production browserify \
   source/index.js \
+  -t brfs
   -t envify \
   -g yo-yoify \
   -g es2020 \

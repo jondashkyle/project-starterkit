@@ -2,4 +2,6 @@ budo \
   source/index.js:bundle.js \
   --dir public \
   --pushstate \
-  --live
+  --live \
+  -- \
+  -t brfs

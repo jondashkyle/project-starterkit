@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "bel": "^4.5.1",
+    "brfs": "^1.4.3",
     "cache-element": "^2.0.1",
     "choo": "^4.1.0",
     "fontfaceobserver": "^2.0.8",

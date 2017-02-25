@@ -8,11 +8,8 @@ function Element (opts) {
     text: 'Example'
   }
 
-  var el = container(o)
-
   function update (opts) {
     o = opts ? x(o, opts) : o
-    morph(container(), el)
   }
 
   function container () {
@@ -24,14 +21,12 @@ function Element (opts) {
   }
 
   return widget({
-    onload: function (el, opts) {
-
-    },
     onupdate: function (el, opts) {
       update(opts)
+      morph(container(), el.children[0])
     },
     render: function (opts) {
-      return h`<div>${el}</div>`
+      return h`<div>${container()}</div>`
     }
   })
 }
