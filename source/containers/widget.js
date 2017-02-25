@@ -26,6 +26,7 @@ function Element (opts) {
       morph(container(), el.children[0])
     },
     render: function (opts) {
+      update(opts)
       return h`<div>${container()}</div>`
     }
   })
