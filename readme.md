@@ -1,64 +1,88 @@
-## starter kit
+# starter kit
 
-**NOTE: THIS IS A WORK IN PROGRESS**
+my take on a very small, very fast foundation for a web app.
 
-this my personal starter kit for web projects. it’s not the best, but it’s mine, and it’s here for you see/use if you want.
+- **very small**: kilobytes
+- **server-side rendering**: yeah we’re isomorphic
+- **basic**: npm scripts and browserify
+- **extendable**: this is a starter kit, not a framework
 
-- it’s lightweight and opinionated
-- it’s not going to work in every situation
-- it’s not going to stay the same
+## getting started
 
-## rambling
+### structure
 
-at the begining of 2016 i took a step back to see what was happening w/ front-end web. a lot of people were using react. it introduced me to unfamiliar ideas about tooling, structuring and concepts like state and morphing.
+- `/app` for your application source and bundles
+- `/server` to handle requests, build an api, and db
+- `/static` for all of your content and assets
 
-i found the process of learning it to be kind of a drag, though… it felt very heavy, so i began looking into alternatives. i ran across [cycle](https://cycle.js.org/), [vue.js](https://vuejs.org/) and some more forward thinking projects like [elm](http://elm-lang.org/).
+### app
 
-these felt better to use, but didn’t click w/ my way of understanding (this isn’t a critisism, but an observation.) then i came across yo-yo, a lightweight module which handles element morphing using vanilla dom elements (nothing virtual here.) it linked to a higher-level framework called [choo](https://github.com/yoshuawuyts/choo), which clicked in that way the others didn’t.
+your app lives in `app`, and has it’s own `package.json`. the server and api stuff sits in the root directory. the structure is sort of like electron best practices. keeping the two separate ensures you’re able to run your app as a simple static site without the need for server.
 
-## core dependencies
+your build and watch scripts are little npm scrips, no webpack fuss. these are extremely expendable and simple. if you want you can stub them out into little bash scripts.
 
-### choo
+### server
 
-choo is used for rendering, state management, event binding and routing. it’s super small (5kb), requires minimal tooling, isomorphic and extremely understandable. [cache-element](https://github.com/yoshuawuyts/cache-element) makes it easy to use arbitrary js modules which manipulate the DOM.
+merry is used to spin up the server and stub out an api. leveldb is used as a data store.
 
-### gr8
+### static
 
-gr8 provides configurable css utility classes to rapidly layout content. it includes support for breakpoints, so you can easily accomidate mobile adjustements without introducing layers of complexity. for development i use the `attach` method for css-in-js. production usually involves generating a css file which is then minified, gzipped, etc…
+sometimes large sites contain a lot of content. because of this, it’s not desirable to copy the entire static directory on build. your content is separate from your app.
 
-### browserify
+## config
 
-webpack is the stuff nightmares are made of. the browserify cli is focused, and does everything i need to do when paired with [npm scripts](https://gist.github.com/substack/7819530). [budo](https://github.com/mattdesl/budo) is used to get a little static server running rapidly with live refresh.
+start by cloning `config.defaults.yaml` to `config.development.yaml`.
 
-## structure
+### options
 
-there isn’t a need to stick to any specific structuring, but i find this setup to work well.
+- `port` to serve on
+- `bundles` the location of your js and css bundles
+- `content` the location of your static assets
 
-### `/source`
+## scripts
 
-source contains all of your js and css.
+- `npm start` for development
+- `npm run build` to bundle the app
 
-- **components** are stateless functional ui elements.
-- **containers** require components and pass them state.
-- **views** connect directly to the router
-- **model** contains your state, reducers, etc…
-- **design** is anything global to design, such as gr8, webfonts, etc…
+## dependencies
 
-### `/public`
+it’s sometimes difficult to locate solid modules, so i’ve included a collection i tend to use in every build.
 
-this is what ends up on your server. if there is anything which needs to be dynamic, i’ll create a JSON endpoint to populate state spererately from this build, most oftentimes using an installation of [kirby](https://getkirby.com/).
+### `app/package.json`
 
-### `/bin`
+- **autoprefixer** for css prefixing
+- **brfs** for using `fs` in the browser
+- **browserify** for building
+- **choo** for the framework
+- **choo-log** for logging
+- **concurrently** for running scripts
+- **gr8** for css utility class generation
+- **nano-markdown** for small markdown formatting
+- **postcss-clean** for css prefixing and uglifying
+- **postcss-cli**
+- **recsst** for a css reset
+- **uglifyify** for minifying the bundle on build
+- **watch** for watching the css for build
+- **watchify** for live compiling js for dev
+- **xtend** for merging objects
+- **xhr** for requests
 
-these are tiny build scripts used within the scripts section of `package.json`. also handy to throw additional scripts in here, such as data parsing or image resizing utils.
+### `package.json`
 
-### `/documents`
+- **create-html** for stubbing out an index file
+- **js-yaml** to read out config file
+- **level** for out database
+- **level-sublevel** for splitting our db up
+- **merry** for request handling
+- **send** for static file serving
+- **xtend** for merging objects
 
-contains any non-public files related to the project, such as assets from the client, design files, invoices, etc…
+## questions
 
-## installation
+### why choo?
 
-- run `npm install` to add dependencies
-- run `npm run watch` to spin up internal http server
-- run `npm run build` to bundle the js into `public/bundles`
+it’s very lightweight, and the architecture makes a lot of sense to me. the events are very useful, and state management is simple.
 
+### why not hot reloading, live refresh, etc?
+
+i find this a distraction when working, as i’m constantly saving. i’d rather work for a bit, saving as i go, then tab over and refresh.
