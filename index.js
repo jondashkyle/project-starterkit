@@ -22,6 +22,8 @@ var app = server({
   db: db,
   routes: routes,
   render: render,
+  title: config.title,
+  head: config.head,
   bundles: config.bundles,
   content: config.content
 })

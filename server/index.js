@@ -21,6 +21,8 @@ if (module.parent) {
 // configuration
 function setup (opts) {
   var options = xtend({
+    title: 'Starterkit',
+    head: '<meta name="viewport" content="width=device-width, initial-scale=1">',
     bundles: './app/dist',
     content: './content',
     routes: { },
@@ -75,6 +77,20 @@ function setup (opts) {
       root: npath.join(process.cwd(), options.bundles)
     }).pipe(res)
   }
+
+  // ssr view
+  function view (route, render) {
+    assert(typeof route !== String, 'Please provide route')
+    assert(typeof render !== Function, 'Please provide render function')
+    return createHTML({
+      script: '/bundles/bundle.js',
+      css: '/bundles/bundle.css',
+      body: render(route),
+      title: options.title,
+      head: options.head,
+      favicon: options.favicon
+    })
+  }
 }
 
 // initialization
@@ -86,16 +102,4 @@ function start (opts) {
   // listen up
   server.listen(parseInt(options.port))
   console.log(`Now serving on http://localhost:${options.port}`)
-}
-
-// ssr view
-function view (route, render) {
-  assert(typeof route !== String, 'Please provide route')
-  assert(typeof render !== Function, 'Please provide render function')
-  return createHTML({
-    script: '/bundles/bundle.js',
-    css: '/bundles/bundle.css',
-    body: render(route),
-    head: '<meta name="viewport" content="width=device-width, initial-scale=1">'
-  })
 }
