@@ -4,7 +4,7 @@ module.exports = notfound
 
 function notfound (state, emit) {
   return html`
-    <body>
+    <body class="p1 ffsans">
       not found
     </body>
   `

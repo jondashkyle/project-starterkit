@@ -44,7 +44,9 @@ function setup (opts) {
   server.route('default', function (req, res, ctx) {
     send(req, req.url, {
       root: npath.join(process.cwd(), options.content)
-    }).pipe(res)
+    })
+      .on('error', error(req, res, ctx))
+      .pipe(res)
   })
 
   // bundles
@@ -60,6 +62,12 @@ function setup (opts) {
     return 'No render function provided'
   }
 
+  // spa redirect
+  function error (req, res, ctx) {
+    return function () {
+      ctx.send(200, view('*', options.render))
+    }
+  }
 
   // bundle assets
   function bundle (req, res, ctx) {
