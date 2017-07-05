@@ -45,11 +45,14 @@ function options (defaults) {
 }
 
 // handle client routes
-function render (route) {
-  assert(typeof route !== String, 'Invalid route')
-  try {
-    return client.toString(route, client.state)
-  } catch (err) {
-    return '404'
+function render (req, res, ctx) {
+  // put auth stuff etc here
+  return function (route) {
+    assert(typeof route !== String, 'Invalid route')
+    try {
+      return client.toString(route, client.state)
+    } catch (err) {
+      return '404'
+    }
   }
 }

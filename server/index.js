@@ -38,7 +38,7 @@ function setup (opts) {
     .filter(route => route !== '*')
     .forEach(function (route) {
       server.route('GET', route, function (req, res, ctx) {
-        ctx.send(200, view(route, options.render))
+        ctx.send(200, view(route, options.render(req, res, ctx)))
       })
     })
 
@@ -67,7 +67,7 @@ function setup (opts) {
   // spa redirect
   function error (req, res, ctx) {
     return function () {
-      ctx.send(200, view('*', options.render))
+      ctx.send(200, view('*', options.render(req, res, ctx)))
     }
   }
 
