@@ -13,20 +13,17 @@ var config = options({
   port: process.env.PORT,
   db: '.db',
   bundles: 'app/dist/',
-  content: 'content/'
+  content: 'content/',
+  site: { }
 })
 
 var db = level(config.db)
 
-var app = server({
+var app = server(xtend({
   db: db,
   routes: routes,
-  render: render,
-  title: config.title,
-  head: config.head,
-  bundles: config.bundles,
-  content: config.content
-})
+  render: render
+}, config))
 
 // init
 app.start({
@@ -36,11 +33,10 @@ app.start({
 
 // read defaults and get going
 function options (defaults) {
-  var config = fs.readFileSync(npath.join(__dirname, 'config.development.yaml'), 'utf8')
+  var config = fs.readFileSync(npath.join(__dirname, 'config.development.yml'), 'utf8')
   var options = xtend(defaults, yaml.safeLoad(config))
-
-  assert(typeof options !== Object, 'Can not parse configuration file')
-  assert(typeof config !== Object, 'No configuration file found')
+  assert(typeof options === 'object', 'Can not parse configuration file')
+  assert(typeof config === 'string', 'No configuration file found')
   return options
 }
 

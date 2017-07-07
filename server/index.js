@@ -1,11 +1,10 @@
+var minifyHTML = require('html-minifier')
 var createHTML = require('create-html')
-var parseUrl = require('parse-url')
 var assert = require('assert')
 var merry = require('merry')
 var xtend = require('xtend')
 var npath = require('path')
 var send = require('send')
-var fs = require('fs')
 
 var Api = require('./api')
 var server = merry()
@@ -21,12 +20,15 @@ if (module.parent) {
 // configuration
 function setup (opts) {
   var options = xtend({
-    title: 'Starterkit',
-    head: '<meta name="viewport" content="width=device-width, initial-scale=1">',
     bundles: './app/dist',
     content: './content',
     routes: { },
-    render: render
+    render: render,
+    htmlMinify: false,
+    site: {
+      title: 'Starterkit',
+      head: '<meta name="viewport" content="width=device-width, initial-scale=1">'
+    }
   }, opts)
 
   var api = Api({
@@ -57,7 +59,7 @@ function setup (opts) {
   // public
   return {
     start: start
-  } 
+  }
 
   // view render default
   function render () {
@@ -80,16 +82,26 @@ function setup (opts) {
 
   // ssr view
   function view (route, render) {
-    assert(typeof route !== String, 'Please provide route')
-    assert(typeof render !== Function, 'Please provide render function')
-    return createHTML({
+    assert(typeof route === 'string', 'Please provide route')
+    assert(typeof render === 'function', 'Please provide render function')
+
+    var htmlOpts = xtend({
       script: '/bundles/bundle.js',
       css: '/bundles/bundle.css',
-      body: render(route),
-      title: options.title,
-      head: options.head,
-      favicon: options.favicon
-    })
+      body: render(route)
+    }, options.site)
+
+    var htmlOutput = createHTML(htmlOpts)
+
+    // minification
+    if (options.htmlMinify) {
+      return minifyHTML.minify(htmlOutput, {
+        minifyCSS: true,
+        collapseWhitespace: true
+      })
+    } else {
+      return htmlOutput
+    }
   }
 }
 

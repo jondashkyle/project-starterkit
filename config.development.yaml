@@ -1,4 +1,0 @@
-# app
-port: 8080
-bundles: app/dist
-content: static

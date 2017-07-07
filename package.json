@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "create-html": "^3.0.0",
+    "html-minifier": "^3.5.2",
     "js-yaml": "^3.8.4",
     "level": "^1.7.0",
     "merry": "^5.3.3",

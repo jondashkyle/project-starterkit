@@ -2,6 +2,7 @@
 npm-debug.log
 node_modules
 
+config.development.yml
 bundle.css
 bundle.js
 .db
