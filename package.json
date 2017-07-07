@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "serve": "PORT=7000 node .",
-    "start": "concurrently \"cd app && npm run css-watch\" \"cd app && npm run js-watch\" \"npm run serve\""
+    "start": "PORT=7000 node .",
+    "dev": "concurrently \"cd app && npm run css-watch\" \"cd app && npm run js-watch\" \"npm start\""
   },
   "keywords": [],
   "author": "Jon-Kyle <contact@jon-kyle.com> (http://jon-kyle.com)",

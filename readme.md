@@ -41,8 +41,9 @@ start by cloning `config.defaults.yaml` to `config.development.yaml`.
 
 ## scripts
 
-- `npm start` for development
-- `npm run build` to bundle the app
+- `npm start` for production
+- `npm run dev` for development
+- `npm run build` to build bundles for production
 
 ## dependencies
 
