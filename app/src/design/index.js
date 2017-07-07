@@ -24,7 +24,7 @@ css.add({
 // concat
 var output = [
   css.toString(),
-  recsst.toString() 
+  recsst.toString()
 ].join('\n')
 
 // export
